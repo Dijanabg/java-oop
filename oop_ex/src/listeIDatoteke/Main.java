@@ -3,6 +3,7 @@ package listeIDatoteke;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -21,6 +22,7 @@ public class Main {
 				saNajmanjomSilom = planeta;
 			}
 		}
+		sacuvajPlanetu(saNajmanjomSilom, "izabrana.txt");
 		System.out.println(saNajmanjomSilom);
 	}
 
@@ -79,6 +81,19 @@ public class Main {
 			System.out.println("Desila se neka greska pri ucitavanju datoteke!");
 		}
 		return p;
+	}
+
+	public static void sacuvajPlanetu(Planeta p, String imeDatoteke) {
+		try {
+			PrintWriter pw = new PrintWriter(imeDatoteke);
+			pw.println(p);
+			pw.flush();
+			pw.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	// koriscenje buffer klase za citanje
